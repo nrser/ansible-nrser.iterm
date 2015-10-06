@@ -28,9 +28,8 @@
     defaults:
       - key: com.googlecode.iterm2:PromptOnQuit
         set: "{{ iterm_prompt_on_quit|bool }}"
-      # see if need this
-      # - key: com.googlecode.iterm2:OnlyWhenMoreTabs
-      #   set: false
+      - key: com.googlecode.iterm2:OnlyWhenMoreTabs
+        set: "{{ iterm_prompt_on_quit|bool }}"
   when: iterm_prompt_on_quit is defined
 
 - name: don't show any windows on start
