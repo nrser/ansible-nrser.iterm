@@ -1,0 +1,45 @@
+---
+# tasks file for nrser.iterm
+- name: install iTerm from homebrew cask
+  homebrew_cask:
+    name: iterm2
+
+- name: iterm2 hotkey
+  state:
+    defaults:
+    - key: com.googlecode.iterm2:Hotkey
+      set: true
+
+    - key: com.googlecode.iterm2:HotKeyTogglesWindow
+      set: true
+
+    - key: com.googlecode.iterm2:HotkeyChar
+      set: 96
+
+    - key: com.googlecode.iterm2:HotkeyCode
+      set: 50
+
+    - key: com.googlecode.iterm2:HotkeyModifiers
+      set: 262401
+  when: iterm_control_backtick_visor
+
+- name: set iTerm prompt on quit setting
+  state:
+    defaults:
+      - key: com.googlecode.iterm2:PromptOnQuit
+        set: "{{ iterm_prompt_on_quit|bool }}"
+      # see if need this
+      # - key: com.googlecode.iterm2:OnlyWhenMoreTabs
+      #   set: false
+  when: iterm_prompt_on_quit is defined
+
+- name: don't show any windows on start
+  state:
+    defaults:
+    - key: com.googlecode.iterm2:Window Arrangements:no-windows
+      set: []
+    - key: com.googlecode.iterm2:Default Arrangement Name
+      set: no-windows
+    - key: com.googlecode.iterm2:OpenArrangementAtStartup
+      set: true
+  when: iterm_no_windows_on_start

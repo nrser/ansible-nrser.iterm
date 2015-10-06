@@ -1,0 +1,12 @@
+---
+# defaults file for nrser.iterm
+
+# use cmd+` to open visor
+iterm_control_backtick_visor: no
+
+# prompt when quitting iterm
+# iterm_prompt_on_quit: true
+
+# set to 'yes' to not show any windows on iTerm start
+# (visor will open with ctrl+` when enabled)
+iterm_no_windows_on_start: no
