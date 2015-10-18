@@ -1,22 +1,37 @@
-Role Name
-=========
+nrser.iterm
+===========
 
-A brief description of the role goes here.
+install iterm from homebrew cask and configure.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Ruby
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+-   `iterm_control_backtick_visor`
+    -   set to `yes` use cmd+` to open visor
+    -   *default:* `no`
+
+-   `iterm_prompt_on_quit`
+    -   prompt when quitting iterm
+
+-   `iterm_no_windows_on_start`
+    -   set to `yes` to not show any windows on iTerm start
+        (visor will open with ctrl+` when enabled)
+    -   *default:* `no`
+
+-   `iterm_silence_bells`
+    -   silence the bells on all profiles.
+    -   *default:* `no`
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+-   nrser.state_mate
+-   nrser.sync.rb
 
 Example Playbook
 ----------------
@@ -25,7 +40,11 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+      - role: nrser.iterm
+        iterm_control_backtick_visor: yes
+        iterm_prompt_on_quit: false
+        iterm_no_windows_on_start: yes
+        iterm_silence_bells: yes
 
 License
 -------
@@ -35,4 +54,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+<https://github.com/nrser>

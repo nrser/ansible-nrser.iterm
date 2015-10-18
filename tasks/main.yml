@@ -42,3 +42,31 @@
     - key: com.googlecode.iterm2:OpenArrangementAtStartup
       set: true
   when: iterm_no_windows_on_start
+
+- name: silence bells on all profiles
+  state: 
+    defaults: 
+      key: com.googlecode.iterm2:New Bookmarks:0
+      unset:
+      
+- name: silence bells on all profiles
+  when: iterm_silence_bells
+  sync.rb:
+    pre: |
+      require 'state_mate/adapters/defaults'
+      defaults = StateMate::Adapters::Defaults
+      key = ['com.googlecode.iterm2', 'New Bookmarks']
+      profiles = defaults.read key
+      
+    in_sync?: |
+      profiles.all? {|profile|
+        profile['Silence Bell'] == true
+      }
+    
+    sync: |
+      profiles.each {|profile|
+        profile['Silence Bell'] = true
+      }
+      
+      defaults.write key, profiles
+    

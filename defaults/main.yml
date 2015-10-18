@@ -10,3 +10,6 @@ iterm_control_backtick_visor: no
 # set to 'yes' to not show any windows on iTerm start
 # (visor will open with ctrl+` when enabled)
 iterm_no_windows_on_start: no
+
+# turn all the fucking bells off
+iterm_silence_bells: no
