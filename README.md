@@ -31,7 +31,7 @@ Dependencies
 ------------
 
 -   nrser.state_mate
--   nrser.sync.rb
+-   nrser.rb
 
 Example Playbook
 ----------------
